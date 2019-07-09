@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 require_relative './lib/environment'
-require 'contentful'
-require 'yaml'
+require 'rspec/core/rake_task'
 require 'funky_fetch'
 
-task default: [:pull]
+RSpec::Core::RakeTask.new(:spec)
+
+task default: [:spec]
 
 task :pull do
   p FunkyFetch.call
