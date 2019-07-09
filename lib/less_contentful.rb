@@ -8,6 +8,10 @@ class LessContentful < Sinatra::Base
   set :views, File.expand_path('views')
   set :database, Content.database
 
+  BASE_CONTENTFUL_API_PATH = '/spaces/:space_id/environments/:environment'
+  ENTRIES_PATH = "#{BASE_CONTENTFUL_API_PATH}/entries"
+  ENTRY_PATH = "#{BASE_CONTENTFUL_API_PATH}/entries/:entry_id"
+
   get '/' do
     erb :index, locals: { database: settings.database }
   end
@@ -17,9 +21,9 @@ class LessContentful < Sinatra::Base
     erb :entry, locals: { entry: entry }
   end
 
-  get '/spaces/:space_id/environments/:environment/entries' do |_space_id, _environment|
+  get(ENTRIES_PATH) do |_space_id, _environment|
     content_type 'application/vnd.contentful.delivery.v1+json'
-    contentful_content_type = params[:content_type]
+    # contentful_content_type = params[:content_type]
     if params['sys.id']
       item = settings.database[params['sys.id']]
       {
@@ -45,7 +49,7 @@ class LessContentful < Sinatra::Base
     end
   end
 
-  get '/spaces/:space_id/environments/:environment/entries/:entry_id' do |_space_id, _environment, entry_id|
+  get(ENTRY_PATH) do |_space_id, _environment, entry_id|
     content_type 'application/vnd.contentful.delivery.v1+json'
     settings.database[entry_id].to_json
   end
