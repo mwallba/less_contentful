@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require 'bundler/setup'
 require 'sinatra'
 require 'content'
 
@@ -10,17 +9,12 @@ class LessContentful < Sinatra::Base
   set :database, Content.database
 
   get '/' do
-    erb :index, locals: {
-      entries_count: settings.database.values.count,
-      database: settings.database
-    }
+    erb :index, locals: { database: settings.database }
   end
 
   get '/:entry_id' do
     entry = settings.database[params['entry_id']]
-    erb :entry, locals: {
-      entry: entry
-    }
+    erb :entry, locals: { entry: entry }
   end
 
   get '/spaces/:space_id/environments/:environment/entries' do |space_id, environment|

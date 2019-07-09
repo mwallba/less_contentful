@@ -1,8 +1,7 @@
-require 'rubygems'
-require 'bundler/setup'
-
+require_relative './lib/environment'
 require 'contentful'
 require 'yaml'
+require 'funky_fetch'
 
 task default: [:pull]
 

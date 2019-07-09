@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'bundler/setup'
+require_relative './environment'
 require 'thor'
 
 class CLI < Thor

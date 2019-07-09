@@ -3,8 +3,12 @@ require 'contentful'
 module ContentfulClients
   extend self
 
+  def environment
+    ENV['RACK_ENV'] || 'development'
+  end
+
   def credentials
-    YAML.load_file('config.yml').dig('development', :delivery)
+    YAML.load_file('config.yml').dig(environment, :delivery)
   rescue Errno::ENOENT
     fail 'Contentful credentials file (config.yml) is missing!'
   end
@@ -14,8 +18,7 @@ module ContentfulClients
       api_url: 'localhost:9292',
       space: 'random_space_id',
       access_token: 'random_token',
-      secure: false,
-      raw_mode: true
+      secure: false
     )
   end
 

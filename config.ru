@@ -1,4 +1,3 @@
-$LOAD_PATH.unshift File.expand_path('.', 'lib')
+require_relative './lib/environment'
 require 'less_contentful'
-
 run LessContentful
