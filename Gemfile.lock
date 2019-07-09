@@ -3,6 +3,7 @@ GEM
   specs:
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
+    ast (2.4.0)
     byebug (11.0.1)
     coderay (1.1.2)
     contentful (2.13.1)
@@ -19,10 +20,14 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.1.1)
     http_parser.rb (0.6.0)
+    jaro_winkler (1.5.3)
     method_source (0.9.2)
     multi_json (1.13.1)
     mustermann (1.0.3)
     nio4r (2.4.0)
+    parallel (1.17.0)
+    parser (2.6.3.0)
+      ast (~> 2.4.0)
     pry (0.12.2)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -40,8 +45,17 @@ GEM
     racksh (1.0.0)
       rack (>= 1.0)
       rack-test (>= 0.5)
+    rainbow (3.0.0)
     rake (12.3.2)
     redis (4.1.2)
+    rubocop (0.72.0)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.6)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.7)
+    ruby-progressbar (1.10.1)
     sinatra (2.0.5)
       mustermann (~> 1.0)
       rack (~> 2.0)
@@ -52,6 +66,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.6)
+    unicode-display_width (1.6.0)
 
 PLATFORMS
   ruby
@@ -63,6 +78,7 @@ DEPENDENCIES
   racksh (~> 1.0)
   rake (~> 12.3)
   redis (~> 4.1)
+  rubocop (~> 0.72.0)
   sinatra (~> 2.0)
   thor (~> 0.20.3)
 

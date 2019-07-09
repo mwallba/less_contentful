@@ -12,3 +12,8 @@ gem "pry-byebug", "~> 3.7"
 gem "racksh", "~> 1.0"
 gem "redis", "~> 4.1"
 gem "thor", "~> 0.20.3"
+
+group :development do
+  gem "rubocop", "~> 0.72.0"
+end
+
