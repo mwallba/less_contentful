@@ -1,0 +1,18 @@
+production: &production
+  :delivery:
+    :space: 'prod_space_id'
+    :access_token: 'prod_space_token'
+  :preview:
+    :space: 'prod_space_id'
+    :access_token: 'prod_space_preview_token'
+    :api_url: preview.contentful.com
+staging: &staging
+  :delivery:
+    :space: 'staging_space_id'
+    :access_token: 'staging_space_token'
+  :preview:
+    :space: 'staging_space_id'
+    :access_token: 'staging_space_preview_token'
+    :api_url: preview.contentful.com
+development:
+  <<: *staging

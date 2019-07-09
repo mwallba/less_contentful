@@ -1,0 +1,21 @@
+<table class="table table-hover">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">content_type</th>
+      <th scope="col">Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% database.each do |id, item| %>
+      <tr class="filterable-row">
+        <th scope="row"><%= id %></th>
+        <td><%= item.dig('sys', 'contentType', 'sys', 'id') || item.dig('sys', 'type') %></td>
+        <td><%= item.dig('fields').first.then { |k,v| v } %></td>
+        <td>
+          <a href="/<%= id %>" class="btn btn-primary">Show</a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
