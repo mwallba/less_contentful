@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'contentful'
 
 module ContentfulClients
-  extend self
+  module_function
 
   def environment
     ENV['RACK_ENV'] || 'development'
@@ -10,7 +12,7 @@ module ContentfulClients
   def credentials
     YAML.load_file('config.yml').dig(environment, :delivery)
   rescue Errno::ENOENT
-    fail 'Contentful credentials file (config.yml) is missing!'
+    raise 'Contentful credentials file (config.yml) is missing!'
   end
 
   def local

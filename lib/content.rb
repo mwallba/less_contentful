@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'funky_fetch'
 
 module Content
-  extend self
+  module_function
 
   def delete(entry_id); end
 
@@ -13,11 +15,12 @@ module Content
 
   def database
     cached_data = redis.get('less_contentful/database')
-    puts "Using cached data..." if cached_data
+    puts 'Using cached data...' if cached_data
     return JSON.parse(cached_data) if cached_data
+
     new_data = FunkyFetch.call
     redis.set('less_contentful/database', new_data.to_json)
-    puts "Using new data..."
+    puts 'Using new data...'
     new_data
   end
 
