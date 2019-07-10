@@ -10,9 +10,9 @@
 
     <title>LessContentful</title>
     <style>
-.table-hover > tbody > tr {
-  cursor: pointer;
-}
+      .table-hover > tbody > tr {
+        cursor: pointer;
+      }
     </style>
   </head>
   <body data-controller="hello">
@@ -49,43 +49,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
-    <script>
-      (() => {
-        const application = Stimulus.Application.start()
-
-        application.register("hello", class extends Stimulus.Controller {
-          static targets = ['filter']
-
-          typeFilter(event) {
-            if (this.enterPressed(event)) {
-              $('tr.filterable-row').show()
-              this.applyFilter()
-            }
-          }
-
-          enterPressed(event) {
-            return event.keyCode === 13
-          }
-
-          applyFilter() {
-            var filterValue = $(this.filterTarget).val()
-            if (filterValue.trim().length)
-              this.filterRows(filterValue)
-          }
-
-          filterRows(filterValue) {
-            var valueWithSpace = filterValue.replace(/\s/g, '\xa0')
-            $.expr[':'].contains = $.expr.createPseudo((arg) => {
-              return (elem) => {
-                return $(elem).text().toUpperCase().indexOf(arg.toUpperCase()) >= 0
-              }
-            })
-            $('tr.filterable-row').hide()
-            $("tr.filterable-row td:contains('" + valueWithSpace + "')").parent().show()
-          }
-        })
-      })()
-    </script>
+    <script src="/assets/js/main.js"></script>
   </body>
 </html>

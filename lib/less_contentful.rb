@@ -4,11 +4,6 @@ require 'sinatra'
 require 'content'
 
 class LessContentful < Sinatra::Base
-  configure :development do
-    require 'sinatra/reloader'
-    register Sinatra::Reloader
-  end
-
   set :public_folder, File.expand_path('public')
   set :views, File.expand_path('views')
   set :database, Content.database

@@ -16,5 +16,4 @@ gem 'thor', '~> 0.20.3'
 group :development do
   gem 'rspec', '~> 3.8'
   gem 'rubocop', '~> 0.72.0'
-  gem 'sinatra-contrib', '~> 2.0'
 end
