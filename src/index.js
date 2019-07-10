@@ -1,3 +1,7 @@
-import bar from './bar';
+import { Application } from 'stimulus'
+import { definitionsFromContext } from 'stimulus/webpack-helpers'
 
-bar();
+const application = Application.start()
+const context = require.context('./controllers', true, /\.js$/)
+console.log("controller definitions:", definitionsFromContext(context))
+application.load(definitionsFromContext(context))
